@@ -214,7 +214,7 @@ const FooterSection = () => {
 
                     {/* Bottom Bar */}
                     <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
-                        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.4)' }}>
+                        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.4)', textAlign: { xs: 'center', sm: 'left' } }}>
                             &copy; {new Date().getFullYear()} ARC9 Studio. All rights reserved.
                         </Typography>
                         <Box sx={{ display: 'flex', gap: 3 }}>
