@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom';
 import { Box, Container, Typography, Grid, IconButton, Link, Divider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -85,7 +86,9 @@ const FooterSection = () => {
                                             {['Social Media Marketing', 'PPC Advertising', 'Search Engine Optimization', 'Content Creation', 'Branding', 'Analytics & Reporting'].map((item, i) => (
                                                 <Link
                                                     key={i}
-                                                    href="#"
+                                                    component={RouterLink}
+                                                    to="/contact"
+                                                    state={{ selectedService: item }}
                                                     underline="none"
                                                     sx={{
                                                         color: 'rgba(255,255,255,0.6)',
@@ -107,7 +110,7 @@ const FooterSection = () => {
                                         <Typography variant="h6" sx={{ color: '#fff', fontWeight: 700 }}>Contact Us</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails sx={{ pt: 2 }}>
-                                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
+                                        <Box component={RouterLink as any} to="/contact" sx={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center', cursor: 'pointer', '&:hover': { opacity: 0.8 } }}>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 1 }}>
                                                 <LocationOnIcon sx={{ color: '#F5A623', fontSize: 20 }} />
                                                 <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
@@ -149,7 +152,9 @@ const FooterSection = () => {
                                             {['Social Media Marketing', 'PPC Advertising', 'Search Engine Optimization', 'Content Creation', 'Branding', 'Analytics & Reporting'].map((item, i) => (
                                                 <Link
                                                     key={i}
-                                                    href="#"
+                                                    component={RouterLink}
+                                                    to="/contact"
+                                                    state={{ selectedService: item }}
                                                     underline="none"
                                                     sx={{
                                                         color: 'rgba(255,255,255,0.6)',
@@ -177,7 +182,7 @@ const FooterSection = () => {
                                         <Typography variant="h6" sx={{ color: '#fff', fontWeight: 700, mb: 3 }}>
                                             Contact Us
                                         </Typography>
-                                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                        <Box component={RouterLink as any} to="/contact" sx={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: 2, cursor: 'pointer', '&:hover': { opacity: 0.8 } }}>
                                             <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                                                 <LocationOnIcon sx={{ color: '#F5A623', fontSize: 20, mt: 0.5 }} />
                                                 <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
