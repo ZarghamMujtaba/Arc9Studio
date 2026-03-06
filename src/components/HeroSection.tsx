@@ -15,7 +15,7 @@ const HeroSection = () => {
                 justifyContent: 'center',
                 overflow: 'hidden',
                 background: '#0D0D1A',
-                pt: { xs: 12, md: 0 },
+                pt: { xs: 4, md: 0 },
             }}
         >
             {/* Grid Pattern Overlay */}
