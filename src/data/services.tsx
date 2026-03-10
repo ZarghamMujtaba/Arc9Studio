@@ -5,6 +5,9 @@ import ArticleIcon from '@mui/icons-material/Article';
 import BrushIcon from '@mui/icons-material/Brush';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import ComputerIcon from '@mui/icons-material/Computer';
+import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
+import PsychologyIcon from '@mui/icons-material/Psychology';
 
 export const services = [
     {
@@ -104,5 +107,47 @@ export const services = [
             'Competitor analysis reports',
         ],
         path: 'analytics-reporting'
+    },
+    {
+        icon: <ComputerIcon sx={{ fontSize: 32 }} />,
+        title: 'Web Design & Development',
+        color: '#2196F3',
+        gradient: 'linear-gradient(135deg, #2196F3, #21CBF3)',
+        points: [
+            'Custom MERN stack & WordPress solutions',
+            'Responsive & user-centric UI/UX design',
+            'E-commerce & inventory systems integration',
+            'Website maintenance & security updates',
+            'Speed optimization & hosting management',
+        ],
+        path: 'web-design-development'
+    },
+    {
+        icon: <VideoCameraBackIcon sx={{ fontSize: 32 }} />,
+        title: 'Media Coverage',
+        color: '#E91E63',
+        gradient: 'linear-gradient(135deg, #E91E63, #FF4081)',
+        points: [
+            'Professional event photography & videography',
+            'Corporate documentary & storytelling',
+            'Press release & media relations',
+            'Live streaming & real-time coverage',
+            'Post-production & cinematic editing',
+        ],
+        path: 'media-coverage'
+    },
+    {
+        icon: <PsychologyIcon sx={{ fontSize: 32 }} />,
+        title: 'AI Digital Influence',
+        color: '#673AB7',
+        gradient: 'linear-gradient(135deg, #673AB7, #512DA8)',
+        points: [
+            'AI influencer creation & management',
+            'Automated AI-driven content workflows',
+            'Predictive consumer behavior analytics',
+            'AI-enhanced personalized marketing',
+            'Synthetic media & virtual brand avatars',
+        ],
+        path: 'ai-digital-influence'
     },
 ];

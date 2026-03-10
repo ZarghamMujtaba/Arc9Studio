@@ -10,6 +10,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { services } from '../data/services';
 
 const FooterSection = () => {
     const { ref: footerRef, inView: footerInView } = useInView({ threshold: 0.2, triggerOnce: true });
@@ -18,15 +19,14 @@ const FooterSection = () => {
         <Box sx={{ background: '#121223', position: 'relative', overflow: 'hidden' }}>
             {/* Main Footer Content */}
             <Box ref={footerRef} sx={{ pt: 8, pb: 4, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                <Container maxWidth={false} sx={{ width: '82%', mx: 'auto' }}>
-                    <Grid container spacing={8}>
+                <Container maxWidth={false} sx={{ width: { xs: '90%', md: '85%' }, mx: 'auto' }}>
+                    <Grid container spacing={8} sx={{ justifyContent: 'space-between' }}>
                         {/* Company Info */}
-                        <Grid size={{ xs: 12, md: 4 }}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={footerInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.5 }}
-                                style={{ textAlign: 'center' }}
                             >
                                 <Typography variant="h4" sx={{
                                     fontWeight: 900, mb: 2, letterSpacing: '-0.02em',
@@ -34,6 +34,7 @@ const FooterSection = () => {
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                     backgroundClip: 'text',
+                                    textAlign: { xs: 'center', md: 'left' }
                                 }}>
                                     ARC9
                                     <Box component="span" sx={{
@@ -47,7 +48,14 @@ const FooterSection = () => {
                                         STUDIO
                                     </Box>
                                 </Typography>
-                                <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', mb: 3, lineHeight: 1.8, textAlign: { xs: 'center', md: 'left' } }}>
+                                <Typography variant="body2" sx={{
+                                    color: 'rgba(255,255,255,0.6)',
+                                    mb: 3,
+                                    lineHeight: 1.8,
+                                    width: { xs: '100%', md: '60%' },
+                                    mx: { xs: 'auto', md: '0' },
+                                    textAlign: { xs: 'center', md: 'left' }
+                                }}>
                                     A premier digital and creative marketing agency dedicated to transforming brands through innovative strategy and data-driven results.
                                 </Typography>
                                 <Box sx={{ display: 'flex', gap: 1, justifyContent: { xs: 'center', md: 'flex-start' } }}>
@@ -73,7 +81,7 @@ const FooterSection = () => {
                         </Grid>
 
                         {/* Mobile Accordions & Desktop Grids */}
-                        <Grid size={{ xs: 12, md: 8 }}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             {/* Mobile View */}
                             <Box sx={{ display: { xs: 'block', md: 'none' } }}>
                                 {/* Services Accordion */}
@@ -83,12 +91,12 @@ const FooterSection = () => {
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, alignItems: 'center' }}>
-                                            {['Social Media Marketing', 'PPC Advertising', 'Search Engine Optimization', 'Content Creation', 'Branding', 'Analytics & Reporting'].map((item, i) => (
+                                            {services.map((service, i) => (
                                                 <Link
                                                     key={i}
                                                     component={RouterLink}
                                                     to="/contact"
-                                                    state={{ selectedService: item }}
+                                                    state={{ selectedService: service.title }}
                                                     underline="none"
                                                     sx={{
                                                         color: 'rgba(255,255,255,0.6)',
@@ -97,7 +105,7 @@ const FooterSection = () => {
                                                         transition: 'all 0.3s ease',
                                                     }}
                                                 >
-                                                    {item}
+                                                    {service.title}
                                                 </Link>
                                             ))}
                                         </Box>
@@ -139,7 +147,7 @@ const FooterSection = () => {
                             {/* Desktop View */}
                             <Grid container spacing={4} sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 {/* Services Links */}
-                                <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }}>
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={footerInView ? { opacity: 1, y: 0 } : {}}
@@ -148,13 +156,18 @@ const FooterSection = () => {
                                         <Typography variant="h6" sx={{ color: '#fff', fontWeight: 700, mb: 3 }}>
                                             Our Services
                                         </Typography>
-                                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                                            {['Social Media Marketing', 'PPC Advertising', 'Search Engine Optimization', 'Content Creation', 'Branding', 'Analytics & Reporting'].map((item, i) => (
+                                        <Box sx={{
+                                            display: 'grid',
+                                            gridTemplateColumns: 'repeat(2, 1fr)',
+                                            gap: 1.5,
+                                            minWidth: '450px'
+                                        }}>
+                                            {services.map((service, i) => (
                                                 <Link
                                                     key={i}
                                                     component={RouterLink}
                                                     to="/contact"
-                                                    state={{ selectedService: item }}
+                                                    state={{ selectedService: service.title }}
                                                     underline="none"
                                                     sx={{
                                                         color: 'rgba(255,255,255,0.6)',
@@ -165,7 +178,7 @@ const FooterSection = () => {
                                                         width: 'fit-content'
                                                     }}
                                                 >
-                                                    {item}
+                                                    {service.title}
                                                 </Link>
                                             ))}
                                         </Box>
@@ -173,7 +186,7 @@ const FooterSection = () => {
                                 </Grid>
 
                                 {/* Contact Info */}
-                                <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                                <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: 'flex', justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={footerInView ? { opacity: 1, y: 0 } : {}}
