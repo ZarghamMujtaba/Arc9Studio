@@ -19,7 +19,7 @@ const FooterSection = () => {
         <Box sx={{ background: '#121223', position: 'relative', overflow: 'hidden' }}>
             {/* Main Footer Content */}
             <Box ref={footerRef} sx={{ pt: 8, pb: 4, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                <Container maxWidth={false} sx={{ width: { xs: '90%', md: '85%' }, mx: 'auto' }}>
+                <Container maxWidth={false} sx={{ width: { xs: '90%', md: '82%' }, mx: 'auto' }}>
                     <Grid container spacing={8} sx={{ justifyContent: 'space-between' }}>
                         {/* Company Info */}
                         <Grid size={{ xs: 12, md: 6 }}>

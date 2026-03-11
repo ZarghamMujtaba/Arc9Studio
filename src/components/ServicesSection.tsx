@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { services } from '../data/services';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ServicesSection = () => {
     const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
@@ -16,7 +17,6 @@ const ServicesSection = () => {
             ref={ref}
             sx={{ py: { xs: 8, md: 14 }, background: '#121223', position: 'relative', overflow: 'hidden' }}
         >
-            {/* Decorative element */}
             <Box
                 sx={{
                     position: 'absolute',
@@ -67,23 +67,24 @@ const ServicesSection = () => {
                                 style={{ height: '100%' }}
                             >
                                 <Card
-                                    onClick={() => navigate('/contact', { state: { selectedService: service.title } })}
                                     sx={{
                                         height: '100%',
                                         position: 'relative',
-                                        overflow: 'visible',
-                                        cursor: 'pointer',
+                                        overflow: 'hidden',
+                                        cursor: 'default',
                                         transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease',
                                         '&:hover': {
                                             transform: 'translateY(-8px)',
-                                            boxShadow: '0 12px 30px rgba(0,0,0,0.3)',
-                                            '&::before': {
+                                            boxShadow: `0 16px 40px ${service.color}20`,
+                                            '&::before': { opacity: 1 },
+                                            '& .explore-btn': {
                                                 opacity: 1,
+                                                transform: 'translateY(0)',
                                             },
                                             '& .service-icon': {
                                                 background: service.gradient,
                                                 color: '#fff',
-                                                boxShadow: `0 8px 24px ${service.color} 40`,
+                                                boxShadow: `0 8px 24px ${service.color}40`,
                                                 transform: 'scale(1.05)',
                                             }
                                         },
@@ -97,26 +98,25 @@ const ServicesSection = () => {
                                             background: service.gradient,
                                             opacity: 0,
                                             transition: 'opacity 0.3s ease',
-                                            zIndex: 1,
+                                            zIndex: 3,
                                         },
                                     }}
                                 >
-                                    <CardContent sx={{ p: 3.5, position: 'relative', zIndex: 2 }}>
-                                        {/* Icon */}
+                                    <CardContent sx={{ p: 3.5, position: 'relative', zIndex: 2, pb: '80px !important' }}>
                                         <Box
                                             className="service-icon"
                                             sx={{
                                                 width: 60,
                                                 height: 60,
                                                 borderRadius: 3,
-                                                background: `${service.gradient} 20`,
+                                                background: `${service.color}20`,
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 mb: 2,
                                                 color: service.color,
-                                                border: `1px solid ${service.color} 30`,
-                                                transition: 'all 0.3s ease',
+                                                border: `1px solid ${service.color}30`,
+                                                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                                             }}
                                         >
                                             {service.icon}
@@ -142,7 +142,7 @@ const ServicesSection = () => {
                                                         }}
                                                     />
                                                     <ListItemText
-                                                        primary={pt}
+                                                        primary={pt.title}
                                                         primaryTypographyProps={{
                                                             variant: 'body2',
                                                             sx: { color: 'rgba(255,255,255,0.6)', fontSize: '0.82rem' },
@@ -152,6 +152,47 @@ const ServicesSection = () => {
                                             ))}
                                         </List>
                                     </CardContent>
+
+                                    {/* Hover explore button */}
+                                    <Box
+                                        className="explore-btn"
+                                        sx={{
+                                            position: 'absolute',
+                                            bottom: 0,
+                                            left: 0,
+                                            right: 0,
+                                            p: 2,
+                                            pt: 3,
+                                            background: `linear-gradient(transparent, #16213E 30%)`,
+                                            opacity: 0,
+                                            transform: 'translateY(10px)',
+                                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                            zIndex: 3,
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <Button
+                                            onClick={() => navigate(`/services/${service.path}`)}
+                                            endIcon={<ArrowForwardIcon sx={{ fontSize: '18px !important' }} />}
+                                            sx={{
+                                                background: service.gradient,
+                                                color: '#fff',
+                                                fontWeight: 700,
+                                                fontSize: '0.85rem',
+                                                px: 3,
+                                                py: 1,
+                                                borderRadius: '50px',
+                                                textTransform: 'none',
+                                                '&:hover': {
+                                                    boxShadow: `0 8px 24px ${service.color}50`,
+                                                    transform: 'translateY(-2px)',
+                                                },
+                                            }}
+                                        >
+                                            Explore Service
+                                        </Button>
+                                    </Box>
                                 </Card>
                             </motion.div>
                         </Grid>

@@ -7,6 +7,7 @@ import FooterSection from './components/FooterSection';
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 import ContactPage from './pages/ContactPage';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:servicePath" element={<ServiceDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
           <FooterSection />
